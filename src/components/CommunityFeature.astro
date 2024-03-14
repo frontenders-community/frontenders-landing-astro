@@ -13,11 +13,11 @@ const { title, highlight, content, image, imageAlt, icon, iconAlt } = Astro.prop
 ---
 <div class="feature columns is-multiline is-flex is-align-items-center">
   <div class="feature-image column is-12-mobile is-6-desktop">
-    <img src={`features/feature-${image}`} alt={imageAlt}>
+    <img src={`/features/feature-${image}`} alt={imageAlt}>
   </div>
   <div class="feature-info column is-12-mobile is-6-desktop">
     <div class="feature-icon">
-      <img src={`icons/${icon}`} alt={iconAlt}>
+      <img src={`/icons/${icon}`} alt={iconAlt}>
     </div>
     <p class="feature-title is-size-3">{ title }</p>
     <p class="feature-content">
