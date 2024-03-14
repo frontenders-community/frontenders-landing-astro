@@ -16,6 +16,8 @@
   --discord-alternative: #fef4f4;
   --discord-text: #fef4f4;
   --youtube: #f00;
+  --github: #fef4f4;
+  --github-text: #202020;
   --white: #fef4f4;
   --difficulty-text: #184149;
   --beginner: #6abecd;
@@ -81,10 +83,16 @@ section.section.alternative {
 /* Buttons */
 .join-server,
 .join-server-alternative,
-.join-youtube {
+.join-youtube,
+.join-github {
   font-weight: 700;
   border: 0;
   border-radius: 12px;
+}
+.join-github {
+  background-color: var(--github);
+  color: var(--github-text);
+  border: 1px solid var(--github-text);
 }
 .join-server {
   background-color: var(--discord);
@@ -100,13 +108,15 @@ section.section.alternative {
 }
 .join-server:hover,
 .join-server-alternative:hover,
-.join-youtube:hover {
+.join-youtube:hover,
+.join-github:hover {
   border-radius: 0;
   transition: .5s;
 }
 .join-server:not(:hover),
 .join-server-alternative:not(:hover),
-.join-youtube:not(:hover) {
+.join-youtube:not(:hover),
+.join-github:not(:hover) {
   transition: .5s;
 }
 .join-server:hover {
