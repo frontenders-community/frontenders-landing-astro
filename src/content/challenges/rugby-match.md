@@ -6,7 +6,7 @@ level: Advanced
 topics: [HTML/CSS, Javascript, DOM]
 repository: rugby-match
 coverImage: rugby.png
-previewImage: rugby.png
+previewImage: rugby-match.png
 starterKit: rugby-match-starter-kit.zip
 ---
 

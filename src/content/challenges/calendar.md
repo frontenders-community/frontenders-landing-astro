@@ -15,8 +15,8 @@ L'app avrà le seguenti funzionalità:
 - possibilità di spostarsi avanti / indietro nel calendario;
 visualizzazione del giorno corrente.
 
-#### Bonus
+#### Bonus
 Aggiunta e visualizzazione degli eventi nel calendario.
 
-#### Tecnologie
+#### Tecnologie
 Prova a risolvere la challenge sfruttando un framework Javascript (uno che già conosci o uno che vuoi scoprire!). Per la manipolazione delle date nella nostra implementazione è stata usata libreria Luxon, ma siete liberi di scegliere qualsiasi altra libreria oppure JS plain.

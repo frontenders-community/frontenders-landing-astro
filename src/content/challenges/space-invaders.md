@@ -18,7 +18,7 @@ gli alieni sono disposti in griglia e si muovono automaticamente in orizzontale,
 - il giocatore vince se uccide tutti gli alieni;
 - il giocatore perde se gli alieni arrivano fino alla sua posizione;
 
-#### Bonus
+#### Bonus
 Provare a gestire diversi livelli del gioco: all'aumentare dei livelli incrementa la velocità di movimento degli alieni
 
 #### Starter Kit
