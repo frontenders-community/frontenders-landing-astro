@@ -48,7 +48,7 @@ const levelNumber = LevelMap[frontmatter.level.toLowerCase()];
       {
         frontmatter.starterKit && <div class="challenge-attachments">
           <button class="attachment button">
-            <a href={`/starter-kits/${frontmatter.starterKit}`} target="_blank">Scarica allegato</a>
+            <a href={`/starter-kits/${frontmatter.starterKit}`} target="_blank">Scarica starter kit</a>
           </button>
         </div>
       }
@@ -79,7 +79,7 @@ const levelNumber = LevelMap[frontmatter.level.toLowerCase()];
 }
 .attachment {
   background-color: var(--topic);
-  font-size: .8rem;
+  font-size: 1.2rem;
 }
 .attachment a {
   color: var(--white);
