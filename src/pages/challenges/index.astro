@@ -1,0 +1,17 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+import ChallengeList from "../../components/ChallengeList.vue";
+
+const pageTitle = "Frontenders - Challenges Frontend";
+const allChallenges = await getCollection("challenges");
+---
+<Layout title={pageTitle}>
+  <ChallengeList client:load challenges={allChallenges} />
+</Layout>
+
+<style is:global>
+.challenges {
+  margin-top: 40px;
+}
+</style>

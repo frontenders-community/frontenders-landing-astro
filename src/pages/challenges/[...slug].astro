@@ -1,0 +1,21 @@
+---
+import { getCollection } from 'astro:content';
+import MarkdownChallengeLayout from '../../layouts/MarkdownChallengeLayout.astro';
+
+
+export async function getStaticPaths() {
+  const entries = await getCollection("challenges");
+  return entries.map(entry => {
+    return {
+      params: { slug: entry.slug },
+      props: { entry },
+    }
+  })
+}
+
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+---
+<MarkdownChallengeLayout frontmatter={entry.data}>
+  <Content />
+</MarkdownChallengeLayout>

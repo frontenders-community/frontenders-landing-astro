@@ -1,0 +1,175 @@
+---
+import Layout from "../layouts/Layout.astro"
+import CommunityFeature from "../components/CommunityFeature.astro";
+import CommunityResource from "../components/CommunityResource.astro";
+
+const features = [
+  {
+    id: 1,
+    image: "confidence.webp",
+    imageAlt: "Coding Confidence",
+    icon: "happy.png",
+    iconAlt: "Happy Face",
+    title: "Coding Confidence",
+    highlight: "La regola d'oro è: la pratica rende perfetti.",
+    content: "Abbandona la sindrome dell'impostore confrontandoti con gli altri, provando nuove sfide e partecipando agli eventi della community.",
+  },
+  {
+    id: 2,
+    image: "portfolio.webp",
+    imageAlt: "Portfolio",
+    icon: "loving.png",
+    iconAlt: "Loving Face",
+    title: "Crea il tuo portfolio",
+    highlight: "Creare un portfolio di progetti è un passo fondamentale nel mondo frontend.",
+    content: "Usa le nostre challenge per lavorare su progetti reali e sempre diversi, dimostrando ai recruiter le tue capacità e la tua creatività.",
+  },
+  {
+    id: 3,
+    image: "trends.webp",
+    imageAlt: "Trends",
+    icon: "surprised.png",
+    iconAlt: "Surprised Face",
+    title: "Stai al passo",
+    highlight: "Il mondo frontend cambia continuamente.",
+    content: "Essere parte di una community ti permette di essere sempre aggiornato e di provare cose nuove insieme ad altre persone.",
+  },
+  {
+    id: 4,
+    image: "community.webp",
+    imageAlt: "Community",
+    icon: "kiss.png",
+    iconAlt: "Kissing Face",
+    title: "Community",
+    highlight: "Far parte di una community è stupendo.",
+    content: "Condividere con gli altri i propri dubbi ma anche le proprie competenze, partecipare agli eventi live, scambiarsi idee. Un pezzo ciascuno.",
+  },
+]
+
+const resources = [
+  {
+    id: 1,
+    title: "Pillole di frontend",
+    content: "Brevi video dedicati ad un argomento specifico, utili per scoprire cose nuove!",
+  },
+  {
+    id: 2,
+    title: "Live Coding",
+    content: "Eventi live (con o senza ospiti) dove scriviamo codice e studiamo cose nuove insieme!",
+  },
+  {
+    id: 3,
+    title: "Guide tematiche",
+    content: "Playlist dedicate ad argomenti più ampi, per chi vuole approfondire.",
+  },
+]
+
+const isFriday = new Date().getDay() === 5;
+---
+<Layout title="Frontenders - La community">
+  <section class="section is-medium">
+    <div class="container">
+      <div class="columns is-vcentered">
+        <div class="column is-6 is-flex is-flex-direction-column is-align-items-flex-start">
+          <h1 class="title is-1 mb-6">
+            <span class="highlight">Hello, Frontender!</span>
+          </h1>
+          <h3 class="subtitle is-3">
+            Ecco 4 motivi per cui dovresti unirti a Frontenders.
+            Sarò breve, tranquillo.
+          </h3>
+          <a href="https://discord.gg/ZdfWFBMw8z" target="_blank" class="join-server button is-medium">
+            Se ti ho già convinto, clicca qui
+          </a>
+        </div>
+        <div class="column is-6 is-hidden-mobile">
+          <img src="/images/about-hero.webp" loading="lazy" alt="Crescita personale">
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="features section alternative has-text-centered">
+    <div class="section-header">
+      <h6 class="section-header-subtitle subtitle is-6 is-uppercase">
+        ecco perchè
+      </h6>
+      <h2 class="section-header-title title is-1">
+        Siamo Frontenders
+      </h2>
+    </div>
+    {
+      features.map(feature => {
+        return (
+          <CommunityFeature
+            title={feature.title}
+            highlight={feature.highlight}
+            content={feature.content}
+            image={feature.image}
+            imageAlt={feature.imageAlt}
+            icon={feature.icon}
+            iconAlt={feature.iconAlt}
+          />
+        )
+      })
+    }
+  </section>
+  <section class="section is-small">
+    <div class="container">
+      <div class="columns is-vcentered">
+        <div class="column is-6 is-flex is-flex-direction-column is-align-items-flex-start">
+          <h1 class="title is-1 mb-6">
+            <span class="highlight">Risorse, risorse ovunque!</span>
+          </h1>
+          <h3 class="subtitle is-3">
+            Cerchi un tutorial? Abbiamo la soluzione!
+          </h3>
+          <a href="https://www.youtube.com/@frontenderscommunity?sub_confirmation=1" target="_blank" class="join-youtube button is-medium">
+            Scopri i nostri video
+          </a>
+        </div>
+        <div class="column is-6 is-hidden-mobile">
+          <!--
+          {isFriday && <img src="/images/friday.png" alt="Crescita personale">}
+          {!isFriday && <img src="/images/risorse-hero.png" alt="Crescita personale">}
+          -->
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="resources section alternative has-text-centered">
+    <div class="section-header">
+      <p class="section-header-subtitle subtitle is-6 is-uppercase">
+        un po' di spoiler
+      </p>
+      <h2 class="section-header-title title is-1">
+        Solo per te
+      </h2>
+    </div>
+    
+    <div class="columns is-multiline">
+      {
+        resources.map(resource => {
+          return (
+            <div class="column is-12-mobile is-4-desktop">
+              <CommunityResource
+                title={resource.title}
+                content={resource.content}
+              />
+            </div>
+          )
+        })
+      }
+    </div>
+  </section>
+</Layout>
+
+<style>
+.features, .resources {
+  padding: 6rem;
+}
+@media screen and (max-width: 426px) {
+  .features, .resources {
+    padding: 2rem;
+  }
+}
+</style>

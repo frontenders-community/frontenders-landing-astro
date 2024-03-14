@@ -1,0 +1,64 @@
+---
+interface Props {
+  title: string;
+  highlight: string;
+  content: string;
+  image: string;
+  imageAlt: string;
+  icon: string;
+  iconAlt: string;
+}
+
+const { title, highlight, content, image, imageAlt, icon, iconAlt } = Astro.props;
+---
+<div class="feature columns is-multiline is-flex is-align-items-center">
+  <div class="feature-image column is-12-mobile is-6-desktop">
+    <img src={`features/feature-${image}`} alt={imageAlt}>
+  </div>
+  <div class="feature-info column is-12-mobile is-6-desktop">
+    <div class="feature-icon">
+      <img src={`icons/${icon}`} alt={iconAlt}>
+    </div>
+    <p class="feature-title is-size-3">{ title }</p>
+    <p class="feature-content">
+      <span class="highlight">{ highlight }</span><br/>
+      { content }
+    </p>
+  </div>
+</div>
+
+<style is:global>
+.feature {
+  text-align: center;
+  margin: 40px 0;
+}
+.feature:nth-child(even) .feature-image {
+  order: 2;
+}
+.feature:nth-child(even) .feature-info {
+  order: 1;
+}
+.feature-icon img {
+  width: 50px;
+}
+.feature-image {
+  order: 1;
+}
+.feature-image img {
+  width: 400px;
+}
+.feature-info {
+  padding: 0 4rem;
+  order: 2;
+  text-align: left;
+}
+.feature-title {
+  font-size: 2.4rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+.feature-content {
+  font-size: 1.3rem;
+  color: #333;
+}
+</style>

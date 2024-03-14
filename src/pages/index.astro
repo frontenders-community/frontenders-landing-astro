@@ -1,0 +1,100 @@
+---
+import { getCollection } from 'astro:content';
+import ChallengeCard from '../components/ChallengeCard.astro';
+import ChallengePreview from '../components/ChallengePreview.vue';
+
+import Layout from '../layouts/Layout.astro';
+
+const topChallenges = await getCollection('challenges');
+---
+
+<Layout title="Frontenders - La Community dedicata al mondo frontend">
+	<section class="section is-medium">
+		<div class="container">
+			<div class="columns is-vcentered">
+				<div class="column is-6 is-flex is-flex-direction-column is-align-items-flex-start">
+					<div class="mb-6">
+						<h1 class="title is-1">Frontenders</h1>
+						<p class="subtitle is-3">
+							<span class="highlight">Dai uno slancio alla tua carriera</span><br />
+							costruisci il tuo portfolio con le nostre challenge,
+							impara ad utilizzare nuove tecnologie ed entra in un
+							network di dev appassionati
+						</p>
+						<a href="https://discord.gg/ZdfWFBMw8z" target="_blank" class="join-server button is-medium">
+							Entra nella community
+						</a>
+					</div>
+				</div>
+				<div class="column is-6 is-hidden-mobile">
+					<img src="/images/screenshot-home.webp" alt="Screenshot di challenge di Frontenders">
+				</div>
+			</div>
+		</div>
+	</section>
+	<section class="alternative section">
+		<div class="container has-text-centered">
+			<p class="section-header-subtitle subtitle is-6 is-uppercase">
+				Affila la tastiera
+			</p>
+			<h2 class="section-header-title title is-1">
+				Le nostre challenge
+			</h2>
+			<div class="columns is-multiline">
+				{
+					topChallenges.slice(0, 3).map(challenge => {
+						return (
+						<div class="column is-12-mobile is-6-tablet is-4-desktop">
+							<ChallengePreview
+								client:load
+								url={`/challenges/${challenge.slug}/`}
+								challenge={challenge}
+							/>
+						</div>
+						)
+					})
+				}
+			</div>
+			<a href="/challenges" class="discover button">Scopri tutte le challenge</a>
+		</div>
+	</section>
+	<section class="cta hero is-medium">
+		<img src="/discord-logo.svg" alt="Logo Discord">
+		<p class="cta-title title is-size-3">
+			Entra nella nostra community Discord
+		</p>
+		<p class="cta-subtitle subtitle is-size-5">
+			Canali tematici, articoli e più di 100 persone con cui condividere
+			esperienze e a cui chiedere consigli.
+		</p>
+		<a href="https://discord.gg/ZdfWFBMw8z" target="_blank" class="join-server-alternative button is-medium">
+			Entra nella community
+		</a>
+	</section>
+</Layout>
+
+<style is:global>
+.hero {
+	align-items: center;
+}
+
+.hero img {
+  width: 200px;
+  margin-bottom: 40px;
+}
+
+.discover {
+  background-color: transparent;
+  color: var(--text);
+  font-weight: 700;
+  font-size: 1.4rem;
+  border-color: var(--text);
+}
+
+.discover:hover {
+  background-color: var(--text);
+  color: var(--white);
+  border-color: inherit;
+  transition: .5s;
+}
+</style>

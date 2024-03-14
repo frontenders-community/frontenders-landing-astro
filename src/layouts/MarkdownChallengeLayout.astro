@@ -1,0 +1,100 @@
+---
+import Layout from "./Layout.astro";
+
+const { frontmatter } = Astro.props;
+
+const LevelMap = {
+  'beginner': 1,
+  'intermediate': 2,
+  'advanced': 3,
+  'pro': 4,
+}
+
+const levelNumber = LevelMap[frontmatter.level.toLowerCase()];
+---
+<Layout title={frontmatter.title}>
+  <section class="section">
+    <div class="container has-text-centered">
+      <h6 class="section-header-subtitle subtitle is-6 is-uppercase">
+        Challenge
+      </h6>
+      <h2 class="section-header-title title is-1">
+        { frontmatter.title }
+      </h2>
+    </div>
+  </section>
+  <section class="section alternative">
+    <div class="challenge-info">
+      <div class="difficulty-badge">
+        <span class:list={["difficulty-number", frontmatter.level.toLowerCase()]}>{ levelNumber }</span>
+        <span class:list={["difficulty-label", frontmatter.level.toLowerCase()]}>
+          { frontmatter.level }
+        </span>
+      </div>
+      <p class="challenge-description is-size-4">
+        { frontmatter.description }
+      </p>
+      <div class="challenge-topics">
+        {
+          frontmatter.topics.map(topic => {
+            return (
+              <span class="topic">
+                { topic }
+              </span>
+            )
+          })
+        }
+      </div>
+      {
+        frontmatter.starterKit && <div class="challenge-attachments">
+          <button class="attachment button">
+            <a href={`/starter-kits/${frontmatter.starterKit}`} target="_blank">Scarica allegato</a>
+          </button>
+        </div>
+      }
+      <figure class="challenge-image image">
+        <img src={`/challenges-preview/${frontmatter.previewImage}`} alt={frontmatter.title}>
+      </figure>
+      <div class="content is-size-5">
+        <slot></slot>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style is:global>
+.challenge-info {
+  text-align: left;
+}
+.difficulty-badge {
+  display: inline-block;
+  margin: 20px 0;
+  font-size: 1.6rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  border-radius: 4px;
+}
+.challenge-attachments {
+  margin: 20px 0;
+}
+.attachment {
+  background-color: var(--topic);
+  font-size: .8rem;
+}
+.attachment a {
+  color: var(--white);
+  font-weight: 700;
+}
+.challenge-description {
+  font-weight: 300;
+}
+.challenge-topics {
+  margin: 20px 0;
+}
+.challenge-image {
+  margin: 20px 0;
+}
+.challenge-image img {
+  width: 800px;
+}
+</style>

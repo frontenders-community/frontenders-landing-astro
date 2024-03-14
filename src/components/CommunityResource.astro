@@ -1,0 +1,42 @@
+---
+interface Props {
+  title: string;
+  content: string;
+}
+
+const { title, content } = Astro.props;
+---
+<div class="resource">
+  <div class="resource-info">
+    <div class="feature-icon">
+      <img src="/icons/happy.png" alt="Happy Face">
+    </div>
+    <p class="resource-title is-size-3">{ title }</p>
+    <p class="resource-content">
+      { content }
+    </p>
+  </div>
+</div>
+
+<style is:global>
+.resource {
+  text-align: center;
+  margin: 40px 0;
+}
+.resource-icon img {
+  width: 50px;
+}
+.resource-info {
+  padding: 0 1rem;
+  text-align: left;
+}
+.resource-title {
+  font-size: 2.4rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+.resource-content {
+  font-size: 1.3rem;
+  color: #333;
+}
+</style>

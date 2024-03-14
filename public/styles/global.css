@@ -1,0 +1,179 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+:root {
+  --bgGrey: #fafafa;
+  --text: #202020;
+  --brand-text: #191919;
+  --section-title: #202020;
+  --navbar-text: #202020;
+  --footer-text: #202020;
+  --card-text: #202020;
+  --topic: #3d54a2;
+  --topic-text: #202020;
+  --brand: #def243;
+  --green: #42b883;
+  --discord: #404eed;
+  --discord-alternative: #fef4f4;
+  --discord-text: #fef4f4;
+  --youtube: #f00;
+  --white: #fef4f4;
+  --difficulty-text: #184149;
+  --beginner: #6abecd;
+  --intermediate: #aad741;
+  --advanced: #f38924;
+  --pro: #ed2c49;
+}
+body {
+  font-family: 'Rubik', sans-serif;
+  color: var(--text);
+}
+.title, .subtitle {
+  color: var(--section-title);
+}
+section.section {
+  background-color: var(--bgGrey);
+}
+section.section.alternative {
+  background-color: var(--white);
+}
+/* Section Header */
+.section-header {
+  margin: 0 0 40px 0;
+}
+.section-header-title {
+  font-weight: 700;
+}
+.section-header-subtitle {
+  letter-spacing: 4px;
+  font-weight: 300;
+}
+/* Call to Action */
+.cta {
+  background-color: var(--discord);
+  color: var(--white);
+  text-align: center;
+  padding: 3rem 8rem;
+}
+.cta-title {
+  font-size: 3rem;
+  font-weight: 700;
+  color: inherit;
+}
+.cta-subtitle {
+  font-size: 1.8rem;
+  font-weight: 300;
+  color: inherit;
+}
+@media screen and (max-width: 426px) {
+  .cta {
+    padding: 2rem;
+  }
+  .cta-title {
+    margin: 10px 0;
+    color: inherit;
+  }
+  .cta-subtitle {
+    margin-bottom: 20px;
+    font-weight: 300;
+    color: inherit;
+  }
+}
+/* Buttons */
+.join-server,
+.join-server-alternative,
+.join-youtube {
+  font-weight: 700;
+  border: 0;
+  border-radius: 12px;
+}
+.join-server {
+  background-color: var(--discord);
+  color: var(--discord-text);
+}
+.join-server-alternative {
+  background-color: var(--discord-alternative);
+  color: var(--discord);
+}
+.join-youtube {
+  background-color: var(--youtube);
+  color: var(--white);
+}
+.join-server:hover,
+.join-server-alternative:hover,
+.join-youtube:hover {
+  border-radius: 0;
+  transition: .5s;
+}
+.join-server:not(:hover),
+.join-server-alternative:not(:hover),
+.join-youtube:not(:hover) {
+  transition: .5s;
+}
+.join-server:hover {
+  color: var(--brand);
+}
+.join-server-alternative:hover {
+  color: var(--discord);
+}
+.join-youtube:hover {
+  color: var(--white);
+}
+/* Highlights */
+.highlight {
+  color: var(--brand-text);
+  background-color: var(--brand);
+  border-bottom: 0px solid var(--brand);
+}
+/* Difficulty Badges */
+span.difficulty-number {
+  padding: 6px 12px;
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
+span.difficulty-label {
+  padding: 6px 12px;
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
+span.difficulty-number.beginner {
+  background-color: var(--beginner);
+  color: var(--white);
+}
+span.difficulty-label.beginner {
+  background-color: var(--white);
+  color: var(--difficulty-text);
+}
+span.difficulty-number.intermediate {
+  background-color: var(--intermediate);
+  color: var(--white);
+}
+span.difficulty-label.intermediate {
+  background-color: var(--white);
+  color: var(--difficulty-text);
+}
+span.difficulty-number.advanced {
+  background-color: var(--advanced);
+  color: var(--white);
+}
+span.difficulty-label.advanced {
+  background-color: var(--white);
+  color: var(--difficulty-text);
+}
+span.difficulty-number.pro {
+  background-color: var(--pro);
+  color: var(--white);
+}
+span.difficulty-label.pro {
+  background-color: var(--white);
+  color: var(--difficulty-text);
+}
+/* Topics */
+span.topic {
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--topic);
+  text-transform: uppercase;
+}
+span.topic:not(:last-child) {
+  margin-right: 12px;
+}
