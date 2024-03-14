@@ -5,7 +5,7 @@ description: Un layout CSS avanzato per visualizzare un elenco di match di rugby
 level: Advanced
 topics: [HTML/CSS, Javascript, DOM]
 repository: rugby-match
-coverImage: rugby.png
+coverImage: rugby-match.png
 previewImage: rugby-match.png
 starterKit: rugby-match-starter-kit.zip
 ---
