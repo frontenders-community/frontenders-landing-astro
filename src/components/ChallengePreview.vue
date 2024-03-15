@@ -81,6 +81,7 @@ const level = computed(() => {
 .challenge-card .card-topics {
   display: flex;
   flex-wrap: wrap;
+  height: 50px;
 }
 .challenge-card .content {
 	margin-top: 20px;
@@ -95,7 +96,7 @@ const level = computed(() => {
   width: 100%;
   padding: 10px 0;
   background-color: var(--green);
-  color: var(--white);
+  color: #303030;
   font-size: 1.3rem;
   font-weight: 700;
   text-transform: uppercase;

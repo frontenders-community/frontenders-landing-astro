@@ -75,9 +75,9 @@ const handleFilter = (selectedTopic) => {
     </section>
     <section class="section alternative">
       <div class="container has-text-centered">
-        <h6 class="section-header-subtitle subtitle is-6 is-uppercase">
+        <p class="section-header-subtitle subtitle is-6 is-uppercase">
           le nostre challenge
-        </h6>
+        </p>
         <h2 class="section-header-title title is-1">
           Affila la tastiera
         </h2>
@@ -97,7 +97,7 @@ const handleFilter = (selectedTopic) => {
   margin: 20px 0 20px 0;
 }
 
-.topic {
+.topic, .topic:active {
   background-color: transparent;
   color: var(--text);
   font-weight: 400;
@@ -107,7 +107,7 @@ const handleFilter = (selectedTopic) => {
 }
 
 .topic:hover {
-  background-color: var(--text);
+  background-color: #333;
   border: 1px solid transparent;
   color: var(--white);
 }
