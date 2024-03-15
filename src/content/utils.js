@@ -11,7 +11,7 @@ export const TOPICS = [
   "CSS avanzato",
   "Responsive",
   "Grafici",
-  "Videogame",
+  "Gioco",
   "Animation",
   "Audio",
 ]

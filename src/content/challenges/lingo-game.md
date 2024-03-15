@@ -1,9 +1,9 @@
 ---
 title: Lingo
 state: published
-description: Web app che ricrea il gioco del Lingo (simile al mastermind), dal programma omonimo televisivo.
+description: Web app che ricrea il gioco del Lingo (simile al mastermind), dal programma omonimo televisivo. Le meccaniche non sono semplici, c'è da ragionare!
 level: Advanced
-topics: [Animation, Strutture dati]
+topics: [Strutture dati, Gioco]
 repository: lingo-game
 coverImage: lingo.png
 previewImage: lingo.png
