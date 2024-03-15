@@ -8,7 +8,7 @@ const props = defineProps({
 })
 
 const state = reactive({
-  activeTopics: ["API"],
+  activeTopics: [],
 })
 
 const topics = TOPICS;
