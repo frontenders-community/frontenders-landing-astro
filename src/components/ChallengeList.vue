@@ -1,16 +1,17 @@
 <script setup>
 import { computed, reactive } from 'vue';
 import ChallengePreview from "./ChallengePreview.vue"
+import { TOPICS } from '../content/utils';
 
 const props = defineProps({
   challenges: Array,
 })
 
 const state = reactive({
-  activeTopic: "all",
+  activeTopics: ["API"],
 })
 
-const topics = ["HTML/CSS", "Javascript", "API", "DOM", "Framework"];
+const topics = TOPICS;
 
 const activeChallenges = computed(() => {
   let newItems = [];
@@ -18,11 +19,11 @@ const activeChallenges = computed(() => {
   if (props.challenges === null) {
     newItems = [];
   } else {
-    if (state.activeTopic === "all") {
+    if (state.activeTopics.length === 0) {
       newItems = props.challenges;
     } else {
       newItems = props.challenges.filter(challenge => {
-        return challenge.data.topics.includes(state.activeTopic);
+        return challenge.data.topics.filter(topic => state.activeTopics.includes(topic)).length > 0;
       });
     }
   }
@@ -30,8 +31,12 @@ const activeChallenges = computed(() => {
   return newItems;
 })
 
-const handleFilter = (newTopic) => {
-  state.activeTopic = newTopic;
+const handleFilter = (selectedTopic) => {
+  if (state.activeTopics.includes(selectedTopic)) {
+    state.activeTopics = state.activeTopics.filter(topic => topic !== selectedTopic);
+  } else {
+    state.activeTopics.push(selectedTopic);
+  }
   //updateQueryParams(newTopic);
 }
 </script>
@@ -41,24 +46,28 @@ const handleFilter = (newTopic) => {
     <section class="section has-text-centered">
       <div>
         <h2 class="section-header-title title is-3">
-          Cerchi un topic specifico?
+          Cerchi un argomento specifico?
         </h2>
         <div class="columns is-multiline is-flex is-align-items-center">
           <div class="column is-12">
             <div class="topics tags is-centered">
-              <div class="topic tag is-large" :class="{ active: state.activeTopic === 'all' }" @click="handleFilter('all')">
-                Tutti
-              </div>
               <div
                 v-if="topics"
                 v-for="topic in topics"
                 :key="topic"
                 class="topic tag is-large"
-                :class="{ active: state.activeTopic === topic }"
+                :class="{ active: state.activeTopics.includes(topic) }"
                 @click="handleFilter(topic)"
               >
                 {{ topic }}
               </div>
+            </div>
+            <div
+              v-if="state.activeTopics.length > 0"
+              class="clear tag is-large"
+              @click="state.activeTopics = []"
+            >
+              Annulla
             </div>
           </div>
         </div>
@@ -84,11 +93,8 @@ const handleFilter = (newTopic) => {
 </template>
 
 <style scoped>
-.challenges {
-  margin-top: 40px;
-}
 .topics {
-  margin: 20px 0 40px 0;
+  margin: 20px 0 20px 0;
 }
 
 .topic {
@@ -106,9 +112,18 @@ const handleFilter = (newTopic) => {
   color: var(--white);
 }
 
-.active {
+.topic.active {
   background-color: var(--brand);
-  border: 1px solid transparent;
   color: var(--topic-text);
+}
+
+.clear {
+  background-color: red;
+  color: var(--white);
+  cursor: pointer;
+}
+
+.challenges {
+  margin-top: 40px;
 }
 </style>

@@ -3,7 +3,7 @@ title: Cocktails
 state: published
 description: Web app che permette di scoprire le ricette di alcuni cocktail visualizzandoli in un bicchiere con le giuste proporzioni.
 level: Intermediate
-topics: [HTML/CSS, Javascript, DOM]
+topics: [Animation, Strutture dati]
 repository: cocktails
 coverImage: cocktails.png
 previewImage: cocktails.png

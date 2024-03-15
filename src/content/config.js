@@ -1,4 +1,5 @@
 import { defineCollection, z } from "astro:content";
+import { TOPICS } from "./utils";
 
 const blogCollection = defineCollection({
   type: "content",
@@ -16,11 +17,12 @@ const challengeCollection = defineCollection({
     state: z.enum(["published", "draft"]),
     description: z.string(),
     level: z.enum(["Beginner", "Intermediate", "Advanced", "Pro"]),
-    topics: z.array(z.enum(["HTML/CSS", "Javascript", "API", "DOM", "Framework"])),
+    topics: z.array(z.enum(TOPICS)),
     repository: z.string(),
     coverImage: z.string(),
     previewImage: z.string().optional(),
     starterKit: z.string().optional(),
+    mostView: z.boolean().optional(),
   })
 })
 

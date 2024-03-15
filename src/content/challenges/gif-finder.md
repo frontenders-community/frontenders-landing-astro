@@ -3,7 +3,7 @@ title: GIF Finder
 state: published
 description: Web app per cercare delle GIF tramite parole chiave e condividerle tramite whatsapp.
 level: Pro
-topics: [HTML/CSS, Framework, API]
+topics: [API, Grid, Responsive]
 repository: vue3-gif-app
 coverImage: gif.png
 previewImage: gif.png

@@ -3,7 +3,7 @@ title: Fishing Shop
 state: published
 description: Web app che implementa, tramite il drag and drop, una bilancia per pesare il pescato del giorno.
 level: Beginner
-topics: [HTML/CSS, Javascript, DOM]
+topics: [Strutture dati, Drag and drop]
 repository: fishing-shop
 coverImage: fishing-shop.png
 previewImage: fishing-shop.png

@@ -3,7 +3,7 @@ title: Responsive Slider
 state: published
 description: Uno slider responsive che adatta il numero di immagini mostrate alla larghezza della viewport.
 level: Intermediate
-topics: [HTML/CSS, Javascript, DOM]
+topics: [Eventi DOM, Responsive]
 repository: responsive-slider-js
 coverImage: slider.png
 previewImage: slider.png

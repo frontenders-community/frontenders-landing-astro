@@ -5,7 +5,9 @@ import ChallengePreview from '../components/ChallengePreview.vue';
 
 import Layout from '../layouts/Layout.astro';
 
-const topChallenges = await getCollection('challenges');
+const topChallenges = await getCollection('challenges', ({ data }) => {
+	return data.state === "published" && data.mostView;
+});
 ---
 
 <Layout title="Frontenders - La Community dedicata al mondo frontend">

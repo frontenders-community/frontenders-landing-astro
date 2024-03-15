@@ -3,10 +3,11 @@ title: Currency Exchange
 state: published
 description: Web app che permette di visualizzare il tasso di conversione tra due valute e i valori dell'ultimo mese tramite un grafico.
 level: Pro
-topics: [HTML/CSS, Framework, API]
+topics: [API, Form, Grafici]
 repository: currency-exchange-vue-3
 coverImage: currency-exchange.png
 previewImage: currency-exchange.png
+mostView: true
 ---
 In questa challenge l'obiettivo è realizzare una web app in cui l'utente può visualizzare la conversione tra due valute.
 

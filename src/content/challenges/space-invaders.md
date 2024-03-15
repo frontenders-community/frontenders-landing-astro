@@ -3,7 +3,7 @@ title: Space Invaders
 state: published
 description: Sviluppare un videogame in Javascript? Roba da pazzi.. o forse no! Mettiti alla prova con Space Invaders!
 level: Pro
-topics: [HTML/CSS, Framework]
+topics: [Videogame, Animation]
 repository: space-invader-react
 coverImage: space-invader.png
 previewImage: space-invader.png

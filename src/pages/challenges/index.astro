@@ -4,7 +4,9 @@ import Layout from "../../layouts/Layout.astro";
 import ChallengeList from "../../components/ChallengeList.vue";
 
 const pageTitle = "Frontenders - Challenges Frontend";
-const allChallenges = await getCollection("challenges");
+const allChallenges =  await getCollection('challenges', ({ data }) => {
+	return data.state === "published";
+});
 ---
 <Layout title={pageTitle}>
   <ChallengeList client:load challenges={allChallenges} />

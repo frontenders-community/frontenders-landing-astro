@@ -3,7 +3,7 @@ title: Drumpad
 state: published
 description: Web app che implementa un drum pad per riprodurre dei suoni, registrare una sequenza e riprodurla.
 level: Advanced
-topics: [HTML/CSS, Framework]
+topics: [Strutture dati, Audio]
 repository: drumpad-react-ts
 coverImage: drumpad.png
 previewImage: drumpad.png

@@ -3,10 +3,11 @@ title: Pokedex
 state: published
 description: Web app che permette di cercare dei pokemon tramite PokeAPI e di gestire un pokedex.
 level: Beginner
-topics: [Javascript, API]
+topics: [Strutture dati, API]
 repository: pokedex-react
 coverImage: pokedex.png
 previewImage: pokedex.png
+mostView: true
 ---
 
 In questa challenge l'obiettivo è creare una web app che permetta di cercare e visualizzare delle informazioni relative ai pokemon e di creare il proprio pokedex.

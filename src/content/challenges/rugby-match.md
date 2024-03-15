@@ -3,11 +3,12 @@ title: Rugby Match
 state: published
 description: Un layout CSS avanzato per visualizzare un elenco di match di rugby. Ispirato al layout della URC.
 level: Advanced
-topics: [HTML/CSS, Javascript, DOM]
+topics: [Strutture dati, CSS avanzato, Animation]
 repository: rugby-match
 coverImage: rugby-match.png
 previewImage: rugby-match.png
 starterKit: rugby-match-starter-kit.zip
+mostView: true
 ---
 
 Molti pensano che scrivere HTML e CSS sia facile. Ma non è sempre così. A volte può diventare una vera sfida.

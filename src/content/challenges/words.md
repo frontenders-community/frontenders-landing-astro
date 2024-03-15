@@ -3,7 +3,7 @@ title: Words Game
 state: published
 description: Web app che mostra una tastiera e chiede all'utente di scrivere una parola senza commettere errori.
 level: Beginner
-topics: [HTML/CSS, Javascript, DOM]
+topics: [Eventi DOM]
 repository: words-game
 coverImage: words.png
 previewImage: words.png

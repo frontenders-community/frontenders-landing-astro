@@ -3,7 +3,7 @@ title: Calendar
 state: published
 description: A chi piace lavorare con le date? A nessuno, probabilmente. Ma prima o poi tocca a tutti. Diamoci da fare!
 level: Intermediate
-topics: [HTML/CSS, Framework]
+topics: [Grid, Date]
 repository: calendar-app-vue-3
 coverImage: calendar.png
 previewImage: calendar.png

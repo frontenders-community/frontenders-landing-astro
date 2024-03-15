@@ -3,7 +3,7 @@ title: Dashboard Criptovalute
 state: published
 description: Una dashboard che visualizza una lista di criptovalute, con paginazione e ordinamento dei dati in tabella.
 level: Advanced
-topics: [HTML/CSS, Framework, API]
+topics: [API, Tabelle, Paginazione, Grafici]
 repository: crypto-table-react
 coverImage: crypto.png
 previewImage: crypto.png
