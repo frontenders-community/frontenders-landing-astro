@@ -26,6 +26,3 @@ Font: Roboto
 
 #### Bonus
 Prova a creare il layout responsive senza utilizzare le media query. Dai all'utente la possibilità di scegliere la velocità di riproduzione della sequenza dei suoni
-
-#### Tecnologie
-Prova a risolvere la challenge sfruttando un framework Javascript (uno che già conosci o uno che vuoi scoprire!).

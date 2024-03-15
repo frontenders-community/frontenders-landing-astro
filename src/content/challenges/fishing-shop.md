@@ -19,6 +19,3 @@ Nello starter kit troverete:
 index.html: è il file HTML su cui lavorare, ha già collegati il file css e il file js
 - css: contiene il file CSS e all'interno sono già importati i font necessari
 - js: contiene il file JS con un array di partenza di pesci, ma sentitevi liberi di aggiungerne altri (troverete diverse immagini negli assets)
-
-#### Tecnologie
-Prova a risolvere la challenge sfruttando solo HTML, CSS (anche con precompilatori) e JavaScript, senza librerie esterne.

@@ -22,6 +22,3 @@ Man mano che scriviamo la parola, questa viene colorata di verde. Alla pressione
 - Calcolo velocità di scrittura
 - Possibilità di scrivere frasi e non solo parole
 - Schermata di fine gioco e possibilità di ricominciare
-
-#### Tecnologie
-Prova a risolvere la challenge sfruttando solo HTML, CSS (anche con precompilatori) e JavaScript, senza librerie esterne.

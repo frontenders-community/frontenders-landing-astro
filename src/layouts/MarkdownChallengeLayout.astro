@@ -58,6 +58,16 @@ const levelNumber = LevelMap[frontmatter.level.toLowerCase()];
       <div class="content is-size-5">
         <slot></slot>
       </div>
+      <div class="tips">
+        <p class="title is-3">Consigli</p>
+        <p class="content is-size-5">
+          Scegli le tecnologie che preferisci per affrontare la challenge. 
+          Il nostro consiglio è sempre quello di mettersi alla prova con 
+          qualcosa di nuovo, che sia un linguaggio, un argomento o una 
+          funzionalità. Se può aiutarti puoi partire da una versione statica 
+          e aggiungere dinamicità un passo alla volta.
+        </p>
+      </div>
     </div>
   </section>
 </Layout>
@@ -96,5 +106,11 @@ const levelNumber = LevelMap[frontmatter.level.toLowerCase()];
 }
 .challenge-image img {
   width: 800px;
+}
+
+.tips {
+  padding: 20px;
+  border: 2px solid #222;
+  border-radius: 4px;
 }
 </style>

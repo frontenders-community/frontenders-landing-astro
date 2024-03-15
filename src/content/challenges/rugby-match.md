@@ -17,15 +17,11 @@ In questa challenge l'obiettivo è riprodurre delle card che rappresentano le pr
 
 Il layout deve essere riprodotto più fedelmente possibile e deve essere responsive.
 
+Parti analizzando la struttura dati dei match (che trovi in matches.json). Lavora inizialmente ad una versione statica della card. Una volta completato il layout puoi provare a generare le card in modo dinamico. Per leggere il json puoi usare fetch o axios. Per i font puoi usare "Oswald" e "Open Sans" oppure altri che consideri più vicini a quelli originali.
+
 #### Starter Kit
 Nello starter kit troverete una cartella assets con dentro due cartelle:
 - img: qui troverete i loghi e le immagini di sfondo necessarie per costruire le card;
 - screenshots: immagini del layout in versione desktop e mobile e il video con gli effetti all'hover;
 - bonus: per chi vuole vi forniamo anche il layout completo della pagina;
 - matches.json: elenco dei dati di tutti i match.
-
-#### Consigli
-Partite analizzando la struttura dati dei match (matches.json). Lavorate inizialmente ad una versione statica della card. Solo una volta completato il layout provate a generare le card in modo dinamico con JS. Per leggere il json potete usare fetch. Per i font potete utilizzare "Oswald" e "Open Sans" oppure altri che considerete più vicini a quelli originali.
-
-#### Tecnologie
-Prova a risolvere la challenge sfruttando solo HTML, CSS (anche con precompilatori) e JavaScript, senza librerie esterne.

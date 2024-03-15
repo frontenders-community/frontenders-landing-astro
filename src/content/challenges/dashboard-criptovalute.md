@@ -15,7 +15,6 @@ In questa challenge l'obiettivo è creare una dashboard per visualizzare informa
 
 Per i dati delle criptovalute abbiamo utilizzato l'API di Coderanking. Per accedere all'API c'è bisogno di una chiave, quindi va creato un account gratuito. Mentre testate la vostra app potrebbe capitare che le chiamate API vengono bloccate perchè raggiungete il limite di richieste. Ma non vi preoccupate, basterà aspettare qualche minuto e sarà possibile inviare di nuovo le richieste.
 
-Per il design abbiamo preso ispirazione ad un layout di Georgy Pashkov.
+Per l'implementazione dei grafici è stata utilizzata la libreria chart-js.
 
-#### Tecnologie
-Prova a risolvere la challenge sfruttando un framework Javascript (uno che già conosci o uno che vuoi scoprire!). Per l'implementazione dei grafici è stata utilizzata la libreria chart.js.
+Per il design abbiamo preso ispirazione ad un layout di Georgy Pashkov.

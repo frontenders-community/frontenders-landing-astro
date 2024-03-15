@@ -24,8 +24,5 @@ all'hover su una slide è presente un effetto di hover e deve essere mostrato un
 #### Starter Kit
 All'interno dello starter-kit sono presenti delle immagini sample per le slide, ma potete usarne anche altre.
 
-#### Tecnologie
-Prova a risolvere la challenge sfruttando solo HTML, CSS (anche con precompilatori) e JavaScript, senza librerie esterne.
-
 #### Credits
 La challenge è ispirata da questo template realizzato da Marketify (https://themeforest.net/item/edrea-personal-portfolio-template/22535185)

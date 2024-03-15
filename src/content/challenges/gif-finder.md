@@ -24,6 +24,3 @@ Font: Roboto. Icone: Fontawesome.
 
 #### Bonus
 Implementa filtro delle gif per categoria.
-
-#### Tecnologie
-Prova a risolvere la challenge sfruttando un framework Javascript (uno che già conosci o uno che vuoi scoprire!).

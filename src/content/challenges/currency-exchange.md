@@ -17,12 +17,11 @@ In particolare, sono presenti due box, ognuno con:
 
 La lista di valute viene fornita dall'API Frankfurter. Anche la conversione da una valuta all'altra viene fatta tramite API. Sempre tramite API viene generato un grafico (box sopra) che mostra il rapporto tra la valuta di origine (selezionata nel box a sinistra) e la valuta di destinazione (selezionata nel box di destra).
 
-L'aspetto grafico mostrato nell'immagine è solo di ispirazione. Per il design ci siamo ispirati ad un lavoro di Eugeniusz Eudokimov. Voi siete liberi di gestire il layout (e soprattutto il grafico) come preferite.
+Il grafico è realizzato con chart-js, che presenta anche dei wrapper  per i principali framework.
+
+La UI mostrata nell'immagine è solo di ispirazione. Per il design ci siamo ispirati ad un lavoro di Eugeniusz Eudokimov. Voi siete liberi di gestire il layout (e soprattutto il grafico) come preferite.
 
 #### API Endpoints
 - /currencies ritorna l'elenco delle valute
 - /latest?amount=10&from=EUR&to=USD ritorna l'ultimo valore registrato del cambio euro-dollaro, in questo caso la conversione è fatta su un amount di 10 euro
 - /2023-03-15..2023-04-15?base=EUR&to=USD ritorna i valori dell'ultimo mese del cambio euro-dollaro (occhio al formato delle date e ai puntini sospensivi)
-
-#### Tecnologie
-Prova a risolvere la challenge sfruttando un framework Javascript (uno che già conosci o uno che vuoi scoprire!). Il grafico è realizzato con chart-js, che presenta dei wrapper anche per i principali framework. Si può comunque scegliere un'altra libreria. Lo stile del grafico è solo d'ispirazione.

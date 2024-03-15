@@ -24,9 +24,6 @@ Provare a gestire diversi livelli del gioco: all'aumentare dei livelli increment
 #### Starter Kit
 All'interno di /assets sono presenti delle immagini e il font
 
-#### Tecnologie
-Prova a risolvere la challenge sfruttando solo HTML, CSS (anche con precompilatori) e JavaScript, senza librerie esterne.
-
 #### Credits
-Il font è di Sizenko Alexander. L'hook useInterval è preso da Dan Abramov. Alcuni spunti riguardo all'implementazione sono presi dal tutorial sul gioco di tetris di Thomas Weibenfalk.
+Il font è di Sizenko Alexander. L'hook useInterval è preso da Dan Abramov. Alcuni spunti riguardo l'implementazione sono presi dal tutorial sul gioco di tetris di Thomas Weibenfalk.
 
