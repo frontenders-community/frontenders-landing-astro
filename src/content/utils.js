@@ -15,3 +15,11 @@ export const TOPICS = [
   "Animation",
   "Audio",
 ]
+
+
+export const LEVELS = [
+  "Beginner",
+  "Intermediate",
+  "Advanced",
+  "Pro"
+]

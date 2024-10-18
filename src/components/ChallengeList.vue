@@ -1,7 +1,7 @@
 <script setup>
 import { computed, reactive } from 'vue';
 import ChallengePreview from "./ChallengePreview.vue"
-import { TOPICS } from '../content/utils';
+import { TOPICS, LEVELS } from '../content/utils';
 
 const props = defineProps({
   challenges: Array,
@@ -9,35 +9,47 @@ const props = defineProps({
 
 const state = reactive({
   activeTopics: [],
+  activeLevel: "",
 })
 
 const topics = TOPICS;
+const levels = LEVELS;
 
 const activeChallenges = computed(() => {
-  let newItems = [];
-
   if (props.challenges === null) {
-    newItems = [];
-  } else {
-    if (state.activeTopics.length === 0) {
-      newItems = props.challenges;
-    } else {
-      newItems = props.challenges.filter(challenge => {
-        return challenge.data.topics.filter(topic => state.activeTopics.includes(topic)).length > 0;
-      });
-    }
+    return [];
   }
 
-  return newItems;
+  return props.challenges.filter(challenge => {
+    const topicMatch = state.activeTopics.length === 0 || 
+      challenge.data.topics.some(topic => state.activeTopics.includes(topic));
+    
+    const levelMatch = state.activeLevel === "" || 
+      state.activeLevel === challenge.data.level;
+    
+    return topicMatch && levelMatch;
+  });
 })
 
-const handleFilter = (selectedTopic) => {
+const handleTopicFilter = (selectedTopic) => {
   if (state.activeTopics.includes(selectedTopic)) {
     state.activeTopics = state.activeTopics.filter(topic => topic !== selectedTopic);
   } else {
     state.activeTopics.push(selectedTopic);
   }
-  //updateQueryParams(newTopic);
+}
+
+const handleLevelFilter = (selectedLevel) => {
+  if (state.activeLevels.includes(selectedLevel)) {
+    state.activeLevels = state.activeLevels.filter(level => level !== selectedLevel);
+  } else {
+    state.activeLevels.push(selectedLevel);
+  }
+}
+
+const clearFilters = () => {
+  state.activeTopics = [];
+  state.activeLevels = [];
 }
 </script>
 
@@ -52,12 +64,11 @@ const handleFilter = (selectedTopic) => {
           <div class="column is-12">
             <div class="topics tags is-centered">
               <div
-                v-if="topics"
                 v-for="topic in topics"
                 :key="topic"
                 class="topic tag is-large"
                 :class="{ active: state.activeTopics.includes(topic) }"
-                @click="handleFilter(topic)"
+                @click="handleTopicFilter(topic)"
               >
                 {{ topic }}
               </div>
@@ -65,9 +76,9 @@ const handleFilter = (selectedTopic) => {
             <div
               v-if="state.activeTopics.length > 0"
               class="clear tag is-large"
-              @click="state.activeTopics = []"
+              @click="clearFilters"
             >
-              Annulla
+              Annulla tutti i filtri
             </div>
           </div>
         </div>
@@ -81,6 +92,25 @@ const handleFilter = (selectedTopic) => {
         <h2 class="section-header-title title is-1">
           Affila la tastiera
         </h2>
+
+        <div class="levels is-flex is-justify-content-space-between">
+          <div>
+            {{ activeChallenges.length }} challenge trovati
+          </div>
+
+          <div class="select-wrapper">
+            <label for="level-select" class="sr-only">Seleziona il livello di difficoltà</label>
+            <select 
+              id="level-select"
+              class="select is-primary is-rounded" 
+              v-model="state.activeLevel"
+              aria-label="Filtra per livello di difficoltà"
+            >
+              <option value="">Tutti i livelli</option>
+              <option v-for="level in levels" :key="level" :value="level">{{ level }}</option>
+            </select>
+          </div>
+        </div>
         <div class="challenges columns is-multiline">
           <div v-for="challenge in activeChallenges" :key="challenge.id"
             class="column is-12-mobile is-6-tablet is-4-desktop">
@@ -125,5 +155,62 @@ const handleFilter = (selectedTopic) => {
 
 .challenges {
   margin-top: 40px;
+}
+
+.levels {
+  margin: 20px 0 20px 0;
+}
+
+.level, .level:active {
+  background-color: transparent;
+  color: var(--text);
+  font-weight: 400;
+  border: 1px solid var(--text);
+  cursor: pointer;
+  transition: .3s;
+}
+
+.level:hover {
+  background-color: #333;
+  border: 1px solid transparent;
+  color: var(--white);
+}
+
+.level.active {
+  background-color: var(--brand);
+  color: var(--topic-text);
+}
+
+.select-wrapper {
+  position: relative;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Assicurati che il select abbia un contrasto sufficiente */
+.select.is-primary select {
+  background-color: var(--brand);
+  color: var(--white);
+  border: 1px solid var(--brand);
+}
+
+.select.is-primary select:focus {
+  outline: 2px solid var(--text);
+  outline-offset: 2px;
+}
+
+/* Aggiungi uno stile per l'icona del select, se necessario */
+.select.is-primary::after {
+  border-color: var(--white);
 }
 </style>
