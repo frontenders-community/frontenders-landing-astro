@@ -1,7 +1,9 @@
 <script setup>
 import { computed, reactive } from "vue";
 import ChallengePreview from "./ChallengePreview.vue";
-import { TOPICS, LEVELS } from "../content/utils";
+import { LEVELS } from "../content/utils";
+import TopicFilter from "./TopicFilter.vue";
+import MultiSelect from "./MultiSelect.vue";
 
 const props = defineProps({
   challenges: Array,
@@ -9,11 +11,10 @@ const props = defineProps({
 
 const state = reactive({
   activeTopics: [],
-  activeLevel: "",
+  activeLevels: [],
   isOffcanvasOpen: false,
 });
 
-const topics = TOPICS;
 const levels = LEVELS;
 
 const activeChallenges = computed(() => {
@@ -27,20 +28,14 @@ const activeChallenges = computed(() => {
       challenge.data.topics.some((topic) => state.activeTopics.includes(topic));
 
     const levelMatch =
-      state.activeLevel === "" || state.activeLevel === challenge.data.level;
+      state.activeLevels.length === 0 || state.activeLevels.includes(challenge.data.level);
 
     return topicMatch && levelMatch;
   });
 });
 
 const handleTopicFilter = (selectedTopic) => {
-  if (state.activeTopics.includes(selectedTopic)) {
-    state.activeTopics = state.activeTopics.filter(
-      (topic) => topic !== selectedTopic
-    );
-  } else {
-    state.activeTopics.push(selectedTopic);
-  }
+  state.activeTopics = selectedTopic;
 };
 
 const clearFilters = () => {
@@ -58,25 +53,7 @@ const toggleOffcanvas = () => {
     <!-- Sidebar per i filtri su desktop -->
     <aside class="sidebar is-hidden-mobile has-background-white">
       <div class="inner">
-        <h2 class="title is-4">Filtra per argomento</h2>
-        <div class="topics tags is-vertical">
-          <div
-            v-for="topic in topics"
-            :key="topic"
-            class="topic tag is-small mr-2"
-            :class="{ active: state.activeTopics.includes(topic) }"
-            @click="handleTopicFilter(topic)"
-          >
-            {{ topic }}
-          </div>
-        </div>
-        <button
-          :disabled="state.activeTopics.length === 0"
-          class="button is-danger is-fullwidth"
-          @click="clearFilters"
-        >
-          Annulla tutti i filtri
-        </button>
+        <TopicFilter @updateTopics="handleTopicFilter" @clearTopics="clearFilters" />
       </div>
     </aside>
 
@@ -87,25 +64,12 @@ const toggleOffcanvas = () => {
     >
       <div class="offcanvas-background" @click="toggleOffcanvas"></div>
       <div class="offcanvas-content">
-        <h2 class="title is-4">Filtra per argomento</h2>
-        <div class="topics tags is-vertical">
-          <div
-            v-for="topic in topics"
-            :key="topic"
-            class="topic tag mr-2"
-            :class="{ active: state.activeTopics.includes(topic) }"
-            @click="handleTopicFilter(topic)"
-          >
-            {{ topic }}
-          </div>
-        </div>
-        <button 
-          class="button is-danger is-fullwidth"
-          @click="clearFilters"
-          :disabled="state.activeTopics.length === 0"
-        >
-          Annulla tutti i filtri
-        </button>
+        <div>{{ activeChallenges.length }} challenge trovati</div>
+
+        <TopicFilter
+          @updateTopics="handleTopicFilter"
+          @clearTopics="clearFilters"
+        />
       </div>
     </div>
 
@@ -119,30 +83,20 @@ const toggleOffcanvas = () => {
           <h2 class="section-header-title title is-1">Affila la tastiera</h2>
 
           <div
-            class="levels is-flex is-justify-content-space-between is-align-items-center"
+            class="levels is-flex is-flex-wrap-wrap is-justify-content-space-between is-align-items-center"
           >
-            <div>{{ activeChallenges.length }} challenge trovati</div>
+            <div class="mb-2">{{ activeChallenges.length }} challenge trovati</div>
 
-            <div class="is-flex is-align-items-center">
+            <div class="is-flex is-align-items-center ml-auto">
               <div class="select-wrapper">
-                <label for="level-select" class="sr-only"
-                  >Seleziona il livello di difficoltà</label
-                >
-                <select
-                  id="level-select"
-                  class="select is-primary is-rounded"
-                  v-model="state.activeLevel"
-                  aria-label="Filtra per livello di difficoltà"
-                >
-                  <option value="">Tutti i livelli</option>
-                  <option v-for="level in levels" :key="level" :value="level">
-                    {{ level }}
-                  </option>
-                </select>
+                <MultiSelect
+                  :options="levels"
+                  v-model="state.activeLevels"
+                />
               </div>
               <!-- Pulsante per aprire l'offcanvas su mobile -->
               <button
-                class="button is-primary is-hidden-tablet is-small ml-2"
+                class="button is-primary is-hidden-tablet ml-2"
                 @click="toggleOffcanvas"
                 aria-label="Filtra per argomento"
               >
@@ -179,36 +133,6 @@ const toggleOffcanvas = () => {
 </template>
 
 <style scoped>
-.topics {
-  margin: 20px 0 20px 0;
-}
-
-.topic,
-.topic:active {
-  background-color: transparent;
-  color: var(--text);
-  font-weight: 400;
-  border: 1px solid var(--text);
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-.topic:hover {
-  background-color: #333;
-  border: 1px solid transparent;
-  color: var(--white);
-}
-
-.topic.active {
-  background-color: var(--brand);
-  color: var(--topic-text);
-}
-
-.clear {
-  background-color: red;
-  color: var(--white);
-  cursor: pointer;
-}
 
 .challenges {
   margin-top: 40px;
@@ -216,6 +140,13 @@ const toggleOffcanvas = () => {
 
 .levels {
   margin: 20px 0 20px 0;
+  flex-direction: row-reverse;
+}
+
+@media screen and (min-width: 426px) {
+  .levels {
+    flex-direction: row;
+  }
 }
 
 .level,
@@ -284,15 +215,6 @@ const toggleOffcanvas = () => {
 
 .main-content {
   flex: 1;
-}
-
-.topics.is-vertical {
-  flex-direction: column;
-  align-items: stretch;
-}
-
-.topics.is-vertical .topic {
-  margin-bottom: 10px;
 }
 
 .offcanvas {
