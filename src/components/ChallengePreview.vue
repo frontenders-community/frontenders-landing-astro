@@ -45,7 +45,9 @@ const level = computed(() => {
 		</div>
 
 		<div class="content">
-			{{ challenge.data.description }}
+      <p class="is-size-6">
+        {{ challenge.data.description }}
+      </p>
 		</div>
 
 		<a class="challenge-cta" :href="url">Scopri</a>
@@ -54,9 +56,11 @@ const level = computed(() => {
 </template>
 
 <style scoped>
-.challenge-card .card {
-  text-align: left;
+.challenge-card.card {
   cursor: pointer;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 .challenge-card figure.image {
   position: relative;
@@ -78,18 +82,24 @@ const level = computed(() => {
   border-radius: 4px;
   z-index: 2;
 }
+.challenge-card .card-content {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
 .challenge-card .card-topics {
   display: flex;
   flex-wrap: wrap;
   height: 50px;
 }
 .challenge-card .content {
+  flex-grow: 1;
 	margin-top: 20px;
-  height: 150px;
   text-align: left;
   color: var(--card-text);
   font-weight: 300;
   font-size: 1.2rem;
+
 }
 .challenge-cta {
   display: block;
