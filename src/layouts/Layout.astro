@@ -1,196 +1,232 @@
 ---
 interface Props {
-	title: string;
+  title: string;
 }
 
 const { title } = Astro.props;
+
+const currentPath = Astro.url.pathname;
+
+const navItems = [
+  { href: "/challenges", label: "Challenges" },
+  { href: "/community", label: "La community" },
+];
 ---
+
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="description" content="Astro description" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/ico" href="/favicon.ico" />
-		<meta name="generator" content={Astro.generator} />
-		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
-		<link rel="stylesheet" href="/styles/global.css">
-		<title>{title}</title>
-	</head>
-	<body>
-		<nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
-			<div class="navbar-brand">
-				<a href="/" id="logo">
-					<img
-						width="75"
-						height="75"
-						src="/logo.webp"
-						alt="Logo Frontenders"
-					/>
-				</a>
-	
-				<a
-					role="button"
-					id="burger"
-					class="navbar-burger"
-					aria-label="menu"
-					aria-expanded="false"
-					data-target="navbar"
-				>
-					<span aria-hidden="true"></span>
-					<span aria-hidden="true"></span>
-					<span aria-hidden="true"></span>
-				</a>
-			</div>
-	
-			<div id="navbar" class="navbar-menu">	
-				<div class="navbar-end">
-					<a href="/challenges" class="navbar-item">
-						Challenges
-					</a>
-	
-					<a href="/community" class="navbar-item">
-						La community
-					</a>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Astro description" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/ico" href="/favicon.ico" />
+    <meta name="generator" content={Astro.generator} />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
+    />
+    <link rel="stylesheet" href="/styles/global.css" />
+    <title>{title}</title>
+  </head>
+  <body>
+    <nav
+      class="navbar is-fixed-top"
+      role="navigation"
+      aria-label="main navigation"
+    >
+      <div class="navbar-brand">
+        <a href="/" id="logo">
+          <img width="75" height="75" src="/logo.webp" alt="Logo Frontenders" />
+        </a>
 
-					<div class="navbar-item">
-						<a href="https://github.com/frontenders-community" target="_blank" class="join-github button">
-							Github
-						</a>
-					</div>
-	
-					<div class="navbar-item">
-						<a href="https://discord.gg/W5GdYGR2Yc" class="join-server button">
-							Discord
-						</a>
-					</div>
-				</div>
-			</div>
-		</nav>
+        <a
+          role="button"
+          id="burger"
+          class="navbar-burger"
+          aria-label="menu"
+          aria-expanded="false"
+          data-target="navbar"
+        >
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+      </div>
 
-		<main class="main-content">
-			<slot />
-		</main>
+      <div id="navbar" class="navbar-menu">
+        <div class="navbar-end">
+          {
+            navItems.map((item) => (
+              <a
+                href={item.href}
+                class:list={[
+                  "navbar-item",
+                  { "is-active": currentPath === item.href },
+                ]}
+              >
+                {item.label}
+              </a>
+            ))
+          }
 
-		<footer class="footer">
-			<div class="content has-text-centered">
-				<p class="is-size-5">
-					<strong>Frontenders</strong> è sviluppato con amore dai suoi founder.
-					<br /> 
-					<span class="stress">
-						Ma non sarebbe stato possibile senza il meraviglioso mondo Frontend (grazie Astro).
-					</span>
-					<br />
-					Vuoi contattarci? Scrivi a <span class="highlight">frontenders.community@gmail.com</span>
-				</p>
-			</div>
-		</footer>
+          <div class="navbar-item">
+            <a
+              href="https://github.com/frontenders-community"
+              target="_blank"
+              class="join-github button"
+            >
+              Github
+            </a>
+          </div>
 
-		<script>
-			document.getElementById("logo").addEventListener("click", function() {
-				document.getElementById("burger").classList.remove("is-active");
-				document.getElementById("navbar").classList.remove("is-active");
-			})
+          <div class="navbar-item">
+            <a href="https://discord.gg/W5GdYGR2Yc" class="join-server button">
+              Discord
+            </a>
+          </div>
+        </div>
+      </div>
+    </nav>
 
-			document.getElementById("burger").addEventListener("click", function() {
-				this.classList.toggle("is-active");
-				document.getElementById("navbar").classList.toggle("is-active");
-			})
-		</script>
-	</body>
+    <main class="main-content">
+      <slot />
+    </main>
+
+    <footer class="footer">
+      <div class="content has-text-centered">
+        <p class="is-size-5">
+          <strong>Frontenders</strong> è sviluppato con amore dai suoi founder.
+          <br />
+          <span class="stress">
+            Ma non sarebbe stato possibile senza il meraviglioso mondo Frontend
+            (grazie Astro).
+          </span>
+          <br />
+          Vuoi contattarci? Scrivi a <span class="highlight"
+            >frontenders.community@gmail.com</span
+          >
+        </p>
+      </div>
+    </footer>
+
+    <script>
+      document.getElementById("logo").addEventListener("click", function () {
+        document.getElementById("burger").classList.remove("is-active");
+        document.getElementById("navbar").classList.remove("is-active");
+      });
+
+      document.getElementById("burger").addEventListener("click", function () {
+        this.classList.toggle("is-active");
+        document.getElementById("navbar").classList.toggle("is-active");
+      });
+    </script>
+  </body>
 </html>
 
 <script>
-	const navbar = document.querySelector(".navbar");
-	const buttons = document.querySelectorAll(".navbar-item .button");
-	window.addEventListener("scroll", () => {
-		if (window.scrollY > 100) {
-			navbar.classList.add("is-small");
-			buttons.forEach(button => {
-				button.classList.add("is-small");
-			})
-		} else {
-			navbar.classList.remove("is-small");
-			buttons.forEach(button => {
-				button.classList.remove("is-small");
-			})
-		}
-	})
+  const navbar = document.querySelector(".navbar");
+  const buttons = document.querySelectorAll(".navbar-item .button");
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 100) {
+      navbar.classList.add("is-small");
+      buttons.forEach((button) => {
+        button.classList.add("is-small");
+      });
+    } else {
+      navbar.classList.remove("is-small");
+      buttons.forEach((button) => {
+        button.classList.remove("is-small");
+      });
+    }
+  });
 </script>
 
 <style is:global>
-nav.navbar {
-  --height: 75px;
-  height: var(--height);
-	line-height: 1;
-	z-index: 9999;
-}
-.navbar-burger {
-  width: var(--height);
-  height: var(--height);
-}
-.navbar-item {
-  color: var(--navbar-text);
-  text-transform: uppercase;
-  font-weight: 700;
-}
-nav.navbar #logo img {
-	display: block;
-	height: var(--height);
-	width: auto;
-  transition: width 0.3s ease, height 0.3s ease;
-}
+  nav.navbar {
+    --height: 75px;
+    height: var(--height);
+    line-height: 1;
+    z-index: 9999;
+  }
+  .navbar-burger {
+    width: var(--height);
+    height: var(--height);
+  }
+  .navbar-item {
+    color: var(--navbar-text);
+    text-transform: uppercase;
+    font-weight: 700;
+  }
 
-.button.is-small:not(.is-rounded) {
-	border-radius: 12px;
-}
+	a.navbar-item:focus,
+	a.navbar-item:hover {
+    color: var(--green);
+		opacity: 0.8;
+  } 
 
-nav.navbar.is-small {
-  --height: 50px;
-	font-size: 0.8rem;
-}
 
-.navbar .navbar-menu {
-	padding-top: 0;
-}
+  a.navbar-item.is-active:not(:focus):not(:hover) {
+    color: var(--green);
+  }
 
-.top-section {
-	padding-top: 100px;
-}
+  nav.navbar #logo img {
+    display: block;
+    height: var(--height);
+    width: auto;
+    transition:
+      width 0.3s ease,
+      height 0.3s ease;
+  }
 
-.footer {
-  background-color: var(--bgGray);
-  color: var(--footer-text);
-}
-.footer p {
-  color: var(--footer-text);
-}
-.footer .stress {
-  font-style: italic;
-}
-.footer a {
-  color: var(--primary);
-  text-decoration: underline;
-}
+  .button.is-small:not(.is-rounded) {
+    border-radius: 12px;
+  }
 
-@media screen and (max-width: 1023px) {
+  nav.navbar.is-small {
+    --height: 50px;
+    font-size: 0.8rem;
+  }
 
-	.navbar-brand {
-		position: relative;
-		z-index: 30;
-		background-color: #ffffff;
-	}
-   .navbar .navbar-menu {
-		position: relative;
-		display: block;
-		transform: translateY(-100%);
-		z-index: 29;
-		transition: transform 0.3s ease;
-		margin-top: -2px;
-   }
+  .navbar .navbar-menu {
+    padding-top: 0;
+  }
 
-	.navbar .navbar-menu.is-active {
-		transform: translateY(0);
-	}
-}
+  .top-section {
+    padding-top: 100px;
+  }
+
+  .footer {
+    background-color: var(--bgGray);
+    color: var(--footer-text);
+  }
+  .footer p {
+    color: var(--footer-text);
+  }
+  .footer .stress {
+    font-style: italic;
+  }
+  .footer a {
+    color: var(--primary);
+    text-decoration: underline;
+  }
+
+  @media screen and (max-width: 1023px) {
+    .navbar-brand {
+      position: relative;
+      z-index: 30;
+      background-color: #ffffff;
+    }
+    .navbar .navbar-menu {
+      position: relative;
+      display: block;
+      transform: translateY(-100%);
+      z-index: 29;
+      transition: transform 0.3s ease;
+      margin-top: -2px;
+    }
+
+    .navbar .navbar-menu.is-active {
+      transform: translateY(0);
+    }
+  }
 </style>
