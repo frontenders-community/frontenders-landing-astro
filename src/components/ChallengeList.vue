@@ -115,7 +115,12 @@ const toggleOffcanvas = () => {
           </div>
 
           <div class="challenges columns is-multiline">
+            <div v-if="activeChallenges.length === 0" class="mx-auto">
+              <img class="nothing-found-image" :src="`/images/nothing-found.webp`" alt="Nessuna challenge trovata" />
+              <p class="title is-4">Nessuna challenge trovata</p>
+            </div>
             <div
+              v-else
               v-for="challenge in activeChallenges"
               :key="challenge.id"
               class="column is-12-mobile is-6-tablet is-4-desktop"
@@ -174,37 +179,13 @@ const toggleOffcanvas = () => {
   position: relative;
 }
 
-.sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border-width: 0;
-}
-
-/* Assicurati che il select abbia un contrasto sufficiente */
-.select.is-primary select {
-  background-color: var(--brand);
-  color: var(--white);
-  border: 1px solid var(--brand);
-}
-
-.select.is-primary select:focus {
-  outline: 2px solid var(--text);
-  outline-offset: 2px;
-}
-
-/* Aggiungi uno stile per l'icona del select, se necessario */
-.select.is-primary::after {
-  border-color: var(--white);
-}
-
 .challenge-list-container {
   display: flex;
+}
+
+.nothing-found-image {
+  width: 100%;
+  max-width: 300px;
 }
 
 .sidebar {
@@ -215,6 +196,10 @@ const toggleOffcanvas = () => {
 
 .main-content {
   flex: 1;
+}
+
+.main-content .section {
+  min-height: 100vh;
 }
 
 .offcanvas {
