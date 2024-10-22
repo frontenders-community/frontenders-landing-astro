@@ -168,10 +168,10 @@ const navItems = [
   a.navbar-item.is-active:not(:focus):not(:hover) {
     color: var(--green);
   }
-
+	
   nav.navbar #logo img {
     display: block;
-    height: var(--height);
+    height: calc(var(--height) + 2px);
     width: auto;
     transition:
       width 0.3s ease,
@@ -185,6 +185,7 @@ const navItems = [
   nav.navbar.is-small {
     --height: 50px;
     font-size: 0.8rem;
+	
   }
 
   .navbar .navbar-menu {
