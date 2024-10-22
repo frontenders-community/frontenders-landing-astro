@@ -18,7 +18,7 @@ const { title } = Astro.props;
 		<title>{title}</title>
 	</head>
 	<body>
-		<nav class="navbar" role="navigation" aria-label="main navigation">
+		<nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
 			<div class="navbar-brand">
 				<a href="/" id="logo">
 					<img
@@ -68,7 +68,9 @@ const { title } = Astro.props;
 			</div>
 		</nav>
 
-		<slot />
+		<main class="main-content">
+			<slot />
+		</main>
 
 		<footer class="footer">
 			<div class="content has-text-centered">
@@ -98,6 +100,24 @@ const { title } = Astro.props;
 	</body>
 </html>
 
+<script>
+	const navbar = document.querySelector(".navbar");
+	const buttons = document.querySelectorAll(".navbar-item .button");
+	window.addEventListener("scroll", () => {
+		if (window.scrollY > 100) {
+			navbar.classList.add("is-small");
+			buttons.forEach(button => {
+				button.classList.add("is-small");
+			})
+		} else {
+			navbar.classList.remove("is-small");
+			buttons.forEach(button => {
+				button.classList.remove("is-small");
+			})
+		}
+	})
+</script>
+
 <style is:global>
 nav.navbar {
   --height: 75px;
@@ -112,6 +132,25 @@ nav.navbar {
   text-transform: uppercase;
   font-weight: 700;
 }
+nav.navbar #logo img {
+	height: var(--height);
+	width: auto;
+  transition: width 0.3s ease, height 0.3s ease;
+}
+
+.button.is-small:not(.is-rounded) {
+	border-radius: 12px;
+}
+
+nav.navbar.is-small {
+  --height: 50px;
+	font-size: 0.8rem;
+}
+
+.top-section {
+	padding-top: 100px;
+}
+
 .footer {
   background-color: var(--bgGray);
   color: var(--footer-text);
