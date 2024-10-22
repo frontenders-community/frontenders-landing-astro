@@ -122,6 +122,8 @@ const { title } = Astro.props;
 nav.navbar {
   --height: 75px;
   height: var(--height);
+	line-height: 1;
+	z-index: 9999;
 }
 .navbar-burger {
   width: var(--height);
@@ -133,6 +135,7 @@ nav.navbar {
   font-weight: 700;
 }
 nav.navbar #logo img {
+	display: block;
 	height: var(--height);
 	width: auto;
   transition: width 0.3s ease, height 0.3s ease;
@@ -145,6 +148,10 @@ nav.navbar #logo img {
 nav.navbar.is-small {
   --height: 50px;
 	font-size: 0.8rem;
+}
+
+.navbar .navbar-menu {
+	padding-top: 0;
 }
 
 .top-section {
@@ -164,5 +171,26 @@ nav.navbar.is-small {
 .footer a {
   color: var(--primary);
   text-decoration: underline;
+}
+
+@media screen and (max-width: 1023px) {
+
+	.navbar-brand {
+		position: relative;
+		z-index: 30;
+		background-color: #ffffff;
+	}
+   .navbar .navbar-menu {
+		position: relative;
+		display: block;
+		transform: translateY(-100%);
+		z-index: 29;
+		transition: transform 0.3s ease;
+		margin-top: -2px;
+   }
+
+	.navbar .navbar-menu.is-active {
+		transform: translateY(0);
+	}
 }
 </style>
