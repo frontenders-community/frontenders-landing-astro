@@ -75,7 +75,7 @@ const toggleOffcanvas = () => {
 
     <!-- Contenuto principale -->
     <main class="main-content">
-      <section class="section  top-section">
+      <section class="section top-section">
         <div class="container has-text-centered">
           <p class="section-header-subtitle subtitle is-6 is-uppercase">
             le nostre challenge
@@ -234,11 +234,13 @@ const toggleOffcanvas = () => {
   padding: 20px;
   z-index: 1000;
   background-color: var(--white);
+  overflow-y: auto;
 }
 
 .sidebar .inner {
   position: sticky;
   top: 100px;
+  overflow-y: auto;
 }
 
 @media screen and (max-width: 768px) {

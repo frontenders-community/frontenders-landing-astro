@@ -29,11 +29,11 @@ const handleClearTopics = () => {
 
 <template>
   <h2 class="title is-4">Filtra per argomento</h2>
-  <div class="topics tags is-vertical">
+  <div class="topics tags ">
     <div
       v-for="topic in topics"
       :key="topic"
-      class="topic tag is-small mr-2"
+      class="topic tag is-medium mr-2"
       :class="{ active: state.activeTopics.includes(topic) }"
       @click="handleTopicClick(topic)"
     >
