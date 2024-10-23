@@ -51,8 +51,8 @@ section.section.alternative {
 }
 /* Call to Action */
 .cta {
-  background-color: var(--discord);
-  color: var(--white);
+  background-color: var(--brand);
+  color: var(--text);
   text-align: center;
   padding: 3rem 8rem;
 }
